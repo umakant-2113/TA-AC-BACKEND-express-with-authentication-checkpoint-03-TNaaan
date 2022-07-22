@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="big-div">
+      <div class="flex-15">
+        <h2>Monthly Saving</h2>
+
+        <h2>income</h2>
+
+        <p>Income :<%= sumIn%></p>
+        <h2>Expenses</h2>
+        <p>Expense <%= sumEx %></p>
+        <h2>Saving</h2>
+        <p><%=sumIn-sumEx %></p>
+      </div>
+      <div class="flex-60">
+<%sortedData.forEach(elm=>{%>
+  <h3> <%= elm.source%></h3>
+
+  <h3> <%= elm.category%></h3>
+  <p> <%= elm.amount%></p>
+  <p><%= format(elm.date,'dd-MM-yyyy') %></p>
+<%})%>
+
+
+
+
+      </div>
+      <div class="flex-15">
+        <form action="/savings/details">
+          <h2>filter by Income</h2>
+          <!-- income,expans -->
+          <select name="source" id="">
+            <%source.forEach(elm=>{%>
+            <option value="<%=elm%>"><%=elm%></option>
+            <%})%>
+          </select>
+          <input type="submit" />
+        </form>
+
+        <form action="/savings/details">
+          <h2>Filter by Expense</h2>
+          <select name="category" id="">
+            <%category.forEach(elm=>{%>
+            <option value="<%=elm%>"><%=elm%></option>
+            <%})%>
+          </select>
+          <input type="submit" />
+        </form>
+
+        <form action="/savings/details" method="GET">
+          <h2>Filter By month</h2>
+          <input type="month" name="month" />
+          <input type="submit" />
+        </form>
+
+        <form action="/savings/details" method="GET">
+          <h2>Filter date</h2>
+          <input type="date" name="startDate" />
+          <input type="date" name="endDate" />
+          <input type="submit" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
