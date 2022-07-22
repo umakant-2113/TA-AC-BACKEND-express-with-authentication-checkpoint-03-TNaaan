@@ -45,7 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session())
 
 
-app.use(auth.userInfo)
+// app.use(auth.userInfo)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/savings",require("./routes/saving"));

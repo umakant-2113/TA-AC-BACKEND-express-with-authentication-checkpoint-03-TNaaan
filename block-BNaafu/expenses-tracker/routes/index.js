@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  
+  console.log(req.user)
   res.render('index', { title: 'Express' });
 });
 
@@ -13,7 +13,7 @@ router.get(
   '/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/users/login' }),
   (req, res) => {
-    res.redirect('/users/register');
+    res.redirect('/savings/details');
   }
 );
 
@@ -27,7 +27,7 @@ router.get(
 router.get(
   '/auth/google/callback',
   passport.authenticate('google', {
-    successRedirect: "/users/register",
+    successRedirect: "/savings/details",
     failureRedirect: '/users/login',
   })
 );

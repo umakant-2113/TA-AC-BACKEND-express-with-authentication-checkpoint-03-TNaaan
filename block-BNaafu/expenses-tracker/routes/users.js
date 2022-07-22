@@ -43,6 +43,7 @@ router.post("/login",(req,res,next)=>{
         return res.redirect("/users/login")
       } 
     req.session.userId=user.id;
+    console.log(req.session.userId)
     res.redirect("/savings/details")
     })
   })
