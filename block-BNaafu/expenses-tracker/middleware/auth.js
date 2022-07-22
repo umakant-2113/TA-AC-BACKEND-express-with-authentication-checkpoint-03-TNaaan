@@ -2,7 +2,9 @@ let User=require("../models/User");
 
 module.exports={
     loggedInUser: (req,res,next)=>{
+        console.log(req.session)
         if(req.session && req.session.userId){
+            console.log(req.session)
             next()
         }else{
             res.redirect("/users/login")
